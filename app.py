@@ -5,7 +5,6 @@ from plotly import graph_objs as go
 from sklearn.linear_model import LinearRegression
 import numpy as np 
 
-
 data = pd.read_csv("data//Salary_Data.csv")
 x = np.array(data['YearsExperience']).reshape(-1,1)
 lr = LinearRegression()
@@ -25,6 +24,7 @@ if nav == "Home":
     val = st.slider("Filter data using years",0,20)
     data = data.loc[data["YearsExperience"]>= val]
     if graph == "Non-Interactive":
+        st.set_option('deprecation.showPyplotGlobalUse', False)
         plt.figure(figsize = (10,5))
         plt.scatter(data["YearsExperience"],data["Salary"])
         plt.ylim(0)
