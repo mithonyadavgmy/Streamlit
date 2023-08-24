@@ -5,7 +5,9 @@ from plotly import graph_objs as go
 from sklearn.linear_model import LinearRegression
 import numpy as np 
 
-data = pd.read_csv("data//Salary_Data.csv")
+# data = pd.read_csv("data//Salary_Data.csv")
+data = st.file_uploader("Upload File")
+data = pd.read_csv(data)
 x = np.array(data['YearsExperience']).reshape(-1,1)
 lr = LinearRegression()
 lr.fit(x,np.array(data['Salary']))
